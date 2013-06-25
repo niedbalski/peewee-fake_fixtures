@@ -1,13 +1,16 @@
 peewee_fake_fixtures
 ====================
 
-Fake fixtures generator for peewee
+Fake fixtures generator for peewee, it populates the models with
+random data depending on the field type.
+
+Useful for auto-generate fixtures and other testing tools.
 
 Usage
 =====
 
 * Install from pip 
-```shell
+```
     pip install peewee-fake-fixtures
 ```
 
