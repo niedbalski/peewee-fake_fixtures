@@ -40,7 +40,6 @@ def fake_fixture(
             elif type(field_type) in field_type_map:
                 field_value = get_value(field_type_map[type(field_type)])
             elif type(field_type) is peewee.ForeignKeyField:
-                print("count user", field_type.rel_model.select().count())
                 field_value = field_type.rel_model.select().first()
             elif hasattr(faker, field_name):
                 field_value = getattr(faker, field_name)()
