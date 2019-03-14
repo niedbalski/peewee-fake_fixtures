@@ -1,6 +1,5 @@
-import pendulum
 from peewee import *
-
+from datetime import datetime
 from peewee_fake_fixtures import fake_fixture
 
 db = SqliteDatabase("test.db")
@@ -13,7 +12,7 @@ class User(Model):
     name = CharField()
     password = CharField()
     age = IntegerField()
-    register_time = DateTimeField(default=pendulum.now())
+    register_time = DateTimeField(default=datetime.now())
 
 
 class Pet(Model):
@@ -31,10 +30,10 @@ def test_fake_fixture():
     fake_fixture(User)
     pet = fake_fixture(Pet)
     assert pet.owner_name == pet.owner.name
-    field_name_map = {'name': 'fjl', "password": '123456'}
-    fjl = fake_fixture(User, field_name_map={'name': 'fjl', "password": '123456'})
-    assert fjl.password == field_name_map['password']
-    assert fjl.name == field_name_map['name']
+    field_name_map = {"name": "fjl", "password": "123456"}
+    fjl = fake_fixture(User, field_name_map={"name": "fjl", "password": "123456"})
+    assert fjl.password == field_name_map["password"]
+    assert fjl.name == field_name_map["name"]
     foo = fake_fixture(User, custom_field_type_map={IntegerField: 100})
     assert foo.age == 100
 
