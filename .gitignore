@@ -1,3 +1,6 @@
 *.pyc
 *.py~
 *.egg-info*
+.idea
+.Ds_Store
+*.db

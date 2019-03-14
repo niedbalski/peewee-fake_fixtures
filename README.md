@@ -19,12 +19,15 @@ randomly auto-generate fixtures on the database
 
 ```python
 
-from model import User, Reservation, PhoneNumber, APIKey
+from model import User, Pet
  
 added_objects = fake_fixture({
-    APIKey: {},
-    User: {
-        'active': True #you can override default values
+    User,
+    field_name_map={
+    'name': 'fjl', "password": '123456'
+    },  #you can override default values
+    custom_field_type_map={
+        IntegerField: 100  # override default field,
     },
     Reservation: {
         'status': ('PENDING', 'pending')
